@@ -921,7 +921,11 @@ TRANSMITTER *tx_create_transmitter(int id, int width, int height) {
   tx->pre_emphasize = 0;
   tx->am_carrier_level = 0.5;
   tx->drive = 50;
+  #if defined (__LDESK__)
+  tx->tune_drive = 2;
+  #else
   tx->tune_drive = 10;
+  #endif
   tx->mic_gain = 0.0;
   tx->tune_use_drive = 0;
   tx->drive_level = 0;
