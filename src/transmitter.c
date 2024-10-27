@@ -1001,7 +1001,7 @@ TRANSMITTER *tx_create_transmitter(int id, int width, int height) {
   tx->eq_freq[8]  =  2500.0;
   tx->eq_freq[9]  =  3000.0;
   tx->eq_freq[10] =  3500.0;
-  tx->eq_gain[0]  = 4.0;
+  tx->eq_gain[0]  = 0.0;
   tx->eq_gain[1]  = -9.0;
   tx->eq_gain[2]  = -6.0;
   tx->eq_gain[3]  = -6.0;

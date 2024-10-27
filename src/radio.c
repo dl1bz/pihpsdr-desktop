@@ -281,8 +281,13 @@ int analog_meter = 0;
 int eer_pwm_min = 100;
 int eer_pwm_max = 800;
 
+#if defined (__LDESK__)
+int tx_filter_low = 100;
+int tx_filter_high = 2900;
+#else
 int tx_filter_low = 150;
 int tx_filter_high = 2850;
+#endif
 
 static int pre_tune_mode;
 static int pre_tune_cw_internal;
