@@ -384,12 +384,18 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
   screen_width = rect.width;
   screen_height = rect.height;
   t_print("Monitor: width=%d height=%d\n", screen_width, screen_height);
+  #if defined (__LDESK__)
+  display_width  = 1280;
+  display_height = 720;
+  full_screen    = 0;
+  #else
   // Start with 800x480, since this width is required for the "discovery" screen.
   // Go to "full screen" mode if display nearly matches 800x480
   // This is all overridden later for the radio from the props file
   display_width  = 800;
   display_height = 480;
   full_screen    = 0;
+  #endif
 
   //
   // Go to full-screen mode by default, if the screen size is approx. 800*480

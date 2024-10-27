@@ -119,8 +119,11 @@ long long frequency_calibration = 0LL;
 
 int sat_mode;
 
+#if defined (__LDESK__)
+int region = REGION_WRC15;
+#else
 int region = REGION_OTHER;
-
+#endif
 int radio_sample_rate;   // alias for radio->info.soapy.sample_rate
 gboolean iqswap;
 
@@ -313,7 +316,11 @@ int can_transmit = 0;
 int optimize_for_touchscreen = 0;
 
 gboolean duplex = FALSE;
+#if defined (__LDESK__)
+gboolean mute_rx_while_transmitting = TRUE;
+#else
 gboolean mute_rx_while_transmitting = FALSE;
+#endif
 
 double drive_max = 100.0;
 double drive_digi_max = 100.0; // maximum drive in DIGU/DIGL
@@ -995,8 +1002,11 @@ void radio_start_radio() {
   // The setting can be changed in the RADIO menu and is stored in the
   // props file, so will be restored therefrom as well.
   //
+  #if defined (__LDESK__)
+  optimize_for_touchscreen = 0;
+  #else
   optimize_for_touchscreen = 1;
-
+  #endif
   for (int id = 0; id < MAX_SERIAL; id++) {
     //
     // Apply some default values. The name ttyACMx is suitable for

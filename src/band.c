@@ -220,7 +220,11 @@ static BANDSTACK_ENTRY bandstack_entriesWWV[] = {
 
 static BANDSTACK bandstack160  = {3, 1, bandstack_entries160};
 static BANDSTACK bandstack80   = {3, 1, bandstack_entries80};
+#if defined (__LDESK__)
+static BANDSTACK bandstack60   = {3, 1, bandstack_entries60_WRC15};
+#else
 static BANDSTACK bandstack60   = {5, 1, bandstack_entries60_OTHER};
+#endif
 static BANDSTACK bandstack40   = {3, 1, bandstack_entries40};
 static BANDSTACK bandstack30   = {3, 1, bandstack_entries30};
 static BANDSTACK bandstack20   = {4, 1, bandstack_entries20};
