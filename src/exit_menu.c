@@ -87,6 +87,7 @@ static gboolean exit_cb (GtkWidget *widget, GdkEventButton *event, gpointer data
   _exit(0);
 }
 
+#if !defined (__LDESK__)
 // cppcheck-suppress constParameterCallback
 static gboolean reboot_cb (GtkWidget *widget, GdkEventButton *event, gpointer data) {
   stop_program();
@@ -104,6 +105,7 @@ static gboolean shutdown_cb (GtkWidget *widget, GdkEventButton *event, gpointer 
 #endif
   _exit(0);
 }
+#endif
 
 void exit_menu(GtkWidget *parent) {
   dialog = gtk_dialog_new();
@@ -131,7 +133,7 @@ void exit_menu(GtkWidget *parent) {
   GtkWidget *exit_b = gtk_button_new_with_label("Exit");
   g_signal_connect (exit_b, "button-press-event", G_CALLBACK(exit_cb), NULL);
   gtk_grid_attach(GTK_GRID(grid), exit_b, col, row, 1, 1);
-  #ifndef __APPLE__
+  #if !defined (__LDESK__)
   col++;
   GtkWidget *reboot_b = gtk_button_new_with_label("Reboot");
   g_signal_connect (reboot_b, "button-press-event", G_CALLBACK(reboot_cb), NULL);
