@@ -4254,7 +4254,7 @@ int parse_cmd(void *data) {
         snprintf(reply, 256, "AI%d;", client->auto_reporting);
         send_resp(client->fd, reply) ;
       } else if (command[3] == ';') {
-        int id = SET(command[2] == '1');
+        int id = SET(command[2] == '1' || command[2] == '2');
         client->auto_reporting = id;
       }
 
