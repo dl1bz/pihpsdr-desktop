@@ -326,6 +326,11 @@ static int init(void *data) {
 
 static void activate_pihpsdr(GtkApplication *app, gpointer data) {
   char text[256];
+  #if defined (__LDESK__)
+    char config_directory[1024];
+    (void) getcwd(config_directory, sizeof(config_directory));
+    STRLCAT(config_directory, "/", 1024);
+  #endif
   t_print("Build: %s (Commit: %s, Date: %s)\n", build_version, build_commit, build_date);
   t_print("GTK+ version %u.%u.%u\n", gtk_major_version, gtk_minor_version, gtk_micro_version);
   uname(&unameData);
@@ -485,8 +490,13 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
   t_print("add pi label to grid\n");
   gtk_grid_attach(GTK_GRID(topgrid), pi_label, 1, 0, 3, 1);
   t_print("create build label\n");
+  #if defined (__LDESK__)
+  snprintf(text, 256, "Built %s, Version %s\nOptions: %s\nAudio module: %s\nWorking Directory: %s",
+           build_date, build_version, build_options, build_audio, config_directory);
+  #else
   snprintf(text, 256, "Built %s, Version %s\nOptions: %s\nAudio module: %s",
            build_date, build_version, build_options, build_audio);
+  #endif
   GtkWidget *build_date_label = gtk_label_new(text);
   gtk_widget_set_name(build_date_label, "med_txt");
   gtk_widget_set_halign(build_date_label, GTK_ALIGN_START);
