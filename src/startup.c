@@ -137,7 +137,11 @@ void startup(const char *path) {
   }
 
 #ifdef __APPLE__
+  #if defined (__LDESK__)
+  snprintf(workdir, PATH_MAX, "%s/Library/Application Support/piHPSDR-desktop", homedir);
+  #else
   snprintf(workdir, PATH_MAX, "%s/Library/Application Support/piHPSDR", homedir);
+  #endif
 
   if (stat(workdir, &statbuf) < 0) {
     mkdir (workdir, 0700);
@@ -156,8 +160,11 @@ void startup(const char *path) {
     mkdir (workdir, 0700);
   }
 
+  #if defined (__LDESK__)
+  snprintf(workdir, PATH_MAX, "%s/.config/pihpsdr-desktop", homedir);
+  #else
   snprintf(workdir, PATH_MAX, "%s/.config/pihpsdr", homedir);
-
+  #endif
   if (stat(workdir, &statbuf) < 0) {
     mkdir (workdir, 0700);
   }
