@@ -143,7 +143,12 @@ static gboolean about_cb (GtkWidget *widget, GdkEventButton *event, gpointer dat
 
 static gboolean exit_cb (GtkWidget *widget, GdkEventButton *event, gpointer data) {
   cleanup();
+  #if defined (__LDESK__)
+  stop_program();
+  _exit(0);
+  #else
   exit_menu(top_window);
+  #endif
   return TRUE;
 }
 
