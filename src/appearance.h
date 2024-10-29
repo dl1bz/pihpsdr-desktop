@@ -37,7 +37,7 @@
 #if defined (__APPLE__)
   #define DISPLAY_FONT_NORMAL     "Tahoma"
   #define DISPLAY_FONT_BOLD       "Tahoma"
-  #define DISPLAY_FONT_MONO       "Monaco"
+  #define DISPLAY_FONT_MONO       "Roboto-Bold"// "Monaco"
 #else
   #define DISPLAY_FONT_NORMAL     "FreeSans"
   #define DISPLAY_FONT_BOLD       "FreeSans"
