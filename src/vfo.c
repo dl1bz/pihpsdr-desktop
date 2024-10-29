@@ -1524,8 +1524,12 @@ void vfo_update() {
       snprintf(temp_text, 32, "%s %s", mode_string[vfo[id].mode], band_filter->title);
       break;
     }
-
+    
+    #if defined (__LDESK__)
+    cairo_set_font_size(cr, vfl->size1 + 2);
+    #else
     cairo_set_font_size(cr, vfl->size1);
+    #endif
     cairo_set_source_rgba(cr, COLOUR_ATTN);
     cairo_move_to(cr, vfl->mode_x, vfl->mode_y);
     cairo_show_text(cr, temp_text);
