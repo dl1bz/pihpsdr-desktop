@@ -200,6 +200,7 @@ gboolean keypress_cb(GtkWidget *widget, GdkEventKey *event, gpointer data) {
   case GDK_KEY_Q:
     stop_program();
     _exit(0);
+    break;
   #endif
 
   //
