@@ -24,7 +24,7 @@ I call my version not a "fork" of DL1YCF's version, it's more a improved version
 
 ## CHANGES in my version against the version of DL1YCF
 
-**Important:** In the Screen-Menu of piHPSDR you need to select at minimum **"VFO bar for 1280px windows"** or higher ! Don't use lower settings, otherwise you will get a few problems to display some of my changed GUI elements correctly !
+**Be aware:** In the Screen-Menu of piHPSDR you need to select at minimum **"VFO bar for 1280px windows"** or higher ! Don't use lower settings, otherwise you will get a few problems to display some of my changed GUI elements correctly !
 
 1. change the work-directory from
 
