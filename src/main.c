@@ -196,7 +196,7 @@ gboolean keypress_cb(GtkWidget *widget, GdkEventKey *event, gpointer data) {
     vfo_id_step(1 - active_receiver->id, -10);
     break;
 
-  #if defined (__APPLE__)
+  #if defined (__LDESK__)
   case GDK_KEY_Q:
     stop_program();
     _exit(0);
