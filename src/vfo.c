@@ -1982,7 +1982,7 @@ void vfo_update() {
   // -----------------------------------------------------------
   if (vfl->eq_x != 0) {
     #if defined (__LDESK__)
-    cairo_move_to(cr, vfl->eq_x + 15, vfl->eq_y);
+    cairo_move_to(cr, vfl->eq_x + 22, vfl->eq_y);
     if (active_receiver->eq_enable) {
       cairo_set_source_rgba(cr, COLOUR_ATTN);
       cairo_show_text(cr, "RxEQ");
@@ -2084,7 +2084,11 @@ void vfo_update() {
   //
   // -----------------------------------------------------------
   if (vfl->cat_x != 0) {
+    #if defined (__LDESK__)
+    cairo_move_to(cr, vfl->cat_x + 7, vfl->cat_y);
+    #else
     cairo_move_to(cr, vfl->cat_x, vfl->cat_y);
+    #endif
 
     if (cat_control > 0) {
       cairo_set_source_rgba(cr, COLOUR_ATTN);

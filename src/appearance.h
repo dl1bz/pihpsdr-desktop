@@ -34,12 +34,14 @@
 // that is calculated based on available space.
 //
 //
-#define DISPLAY_FONT_NORMAL     "FreeSans"
-#ifdef __APPLE__
-  #define DISPLAY_FONT_BOLD       "FreeSansBold"
+#if defined (__APPLE__)
+  #define DISPLAY_FONT_NORMAL     "Tahoma"
+  #define DISPLAY_FONT_BOLD       "Tahoma"
 #else
+  #define DISPLAY_FONT_NORMAL     "FreeSans"
   #define DISPLAY_FONT_BOLD       "FreeSans"
 #endif
+
 #define DISPLAY_FONT_SIZE1 10                       // no longer used, this is too small for elder hams
 #define DISPLAY_FONT_SIZE2 12                       // used for SWR, FWD in Tx meter, S-meter ticks, and panadapter labels
 #define DISPLAY_FONT_SIZE3 16                       // used for warning/info in panadapters
