@@ -54,7 +54,7 @@ So we have a different work-directory for my improved version of piHPSDR, which 
 
 So the original code is still present inside and will be **not removed**.
 
-5. I remove the manual part and some other things from my code base, please use the [manual from the version of DL1YCF](https://github.com/dl1ycf/pihpsdr/releases/download/current/piHPSDR-Manual.pdf) instead. I have no plans and no time for a own manual, sri.
+5. I removed the manual part and some other things from my code base, please use the [manual from the version of DL1YCF](https://github.com/dl1ycf/pihpsdr/releases/download/current/piHPSDR-Manual.pdf) instead. I have no plans and no time for a own manual, sri. Christoph is using TeX for the manual, but that is really not my playground for made manuals.
 
 ## Requirements - personal skills and technical knowledge
 
