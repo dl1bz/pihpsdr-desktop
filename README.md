@@ -22,7 +22,7 @@ My version breaks the limitation of low-resolution screens and **is made for scr
 
 I call my version not a "fork" of DL1YCF's version, it's more a improved version for desktops. As far as possible my version is ever merged to the most actual code base of DL1YCF's version, but with my additional improvements.
 
-## Changes in my version against the version of DL1YCF
+## CHANGES in my version against the version of DL1YCF
 
 1. change the work-directory from
 
