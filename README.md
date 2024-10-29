@@ -1,6 +1,6 @@
 # piHPSDR
 
-piHPSDR is a Open Source hamradio SDR application for Linux and macOS, primarily for use with SDR using the HPSDR protocol 1 & 2 and was initially developed by John Melton G0ORX/N6LYT.
+piHPSDR is a Open Source hamradio SDR application for Linux and macOS, primarily for use with SDR devices using the HPSDR protocol 1 & 2 and was initially developed by John Melton G0ORX/N6LYT.
 
 Lately Christoph/DL1YCF has continued the development of piHPSDR and add a lot of options, which hasn't include the original version, so DL1YCF's version is the most up-to-date version of piHPSDR. You can find his version here:
 
@@ -61,6 +61,10 @@ So the original code is still present inside and will be **not removed**.
 **I only publish pure source code, not ready-compiled binaries**. That means, you need to compile the application by yourself and install it. Follow the instructions *Appendix J: LINUX compile from sources* and *Appendix K: MacOS compile from sources* which you can read in the piHPSDR [manual at DL1YCF pihpsdr Github repository](https://github.com/dl1ycf/pihpsdr/releases/download/current/piHPSDR-Manual.pdf).
 
 I do not teach a basic course in using operating systems too ! **You** need to know, how you use a shell in Linux or macOS, a compiler and so on. Without this knowledge you will surely don't have success, if you don't know, what and how you need to do all. With macOS you need to install the Homebrew-Environment and XQuartz for running piHPSDR.
+
+## My development environment
+
+I develop the code with macOS 14.7 . Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and an Macbook Air M1. My SDR device is a Hermes Lite 2 with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR.
 
 ## Credits
 
