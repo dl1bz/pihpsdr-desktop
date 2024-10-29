@@ -38,7 +38,7 @@ to
    ˜/.config/pihpsdr-desktop (Linux)
 ```
 
-So we have a different work-directory for my improved version of piHPSDR, which not affected the original work-directory.
+So we have a different work-directory for my improved version of piHPSDR, which not affected the original work-directory. But you can copy the existing .prop-files from the old to the new work-directory.
 
 2. In the TX menu I removed the option **Digi-drive** and replace it with the option **Leveler gain** and **Leveler switch on/off**.
 3. I made some helpful GUI improvements, e.g. I extend the digital S-Meter, show state and level of CFC, Leveler, processor (which is the baseband compressor).
