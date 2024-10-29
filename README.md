@@ -4,7 +4,7 @@ piHPSDR is a Open Source hamradio SDR application for Linux and macOS, primarily
 
 Lately Christoph/DL1YCF has continued the development of piHPSDR and add a lot of options, which hasn't include the original version, so DL1YCF's version is the most up-to-date version of piHPSDR. You can find his version here:
 
-[https://github.com/dl1ycf/pihpsdr/](https://https://github.com/dl1ycf/pihpsdr/)
+[https://github.com/dl1ycf/pihpsdr/](https://github.com/dl1ycf/pihpsdr/)
 
 ## The goal of my "improved" version of piHPSDR or why I do this
 
