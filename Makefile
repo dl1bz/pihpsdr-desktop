@@ -838,12 +838,19 @@ endif
 	@mkdir -p pihpsdr.app/Contents/MacOS
 	@mkdir -p pihpsdr.app/Contents/Frameworks
 	@mkdir -p pihpsdr.app/Contents/Resources
+	@echo "Generate macOS pihpsdr.app container..."
 	@cp pihpsdr pihpsdr.app/Contents/MacOS/pihpsdr
 	@cp MacOS/PkgInfo pihpsdr.app/Contents
 	@cp MacOS/Info.plist pihpsdr.app/Contents
 	@cp MacOS/hpsdr.icns pihpsdr.app/Contents/Resources/hpsdr.icns
 	@cp MacOS/hpsdr.png pihpsdr.app/Contents/Resources
+	@sleep 1
+	@echo "Copy Fonts..."
+	@cp -R fonts/Roboto ${HOME}/Library/Fonts
+	@sleep 1
+	@echo "Copy pihpsdr to your Desktop..."
 	@mv pihpsdr.app ${HOME}/Desktop
+	@echo "Starting pihpsdr..."
 	@open -a ${HOME}/Desktop/pihpsdr.app
 
 #############################################################################
