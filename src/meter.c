@@ -681,7 +681,7 @@ void meter_update(RECEIVER *rx, int meter_type, double value, double alc, double
       // snprintf(sf, 32, "%d dBm", (int)(max_rxlvl - 0.5));  // assume max_rxlvl < 0 in rounding
       snprintf(sf, 32, "%s", dbm2smeter[get_SWert((int)(max_rxlvl - 0.5))]); // assume max_rxlvl < 0 in roundig
       #if defined (__APPLE__)
-        cairo_move_to(cr, text_location + 17, Y2 - 8);     
+        cairo_move_to(cr, text_location + 12, Y2 - 8);
       #else
       cairo_move_to(cr, text_location + 10, Y2 - 6);
       #endif
