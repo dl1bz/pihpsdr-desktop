@@ -66,7 +66,7 @@ I do not teach a basic course in using operating systems too ! **You** need to k
 
 ## My development environment
 
-I develop the code with macOS 14 aka Sonoma. Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and an Macbook Air M1. My SDR device is a [Hermes Lite 2](http://www.hermeslite.com/) with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR.
+I develop the code with macOS 14 aka Sonoma. Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and a Macbook Air M1. My SDR device is a [Hermes Lite 2](http://www.hermeslite.com/) with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR.
 Have a look too at [my QRZ.com page](https://www.qrz.com/db/DL1BZ) and/or [my Blog](https://hamradio.bzsax.de) (only in German).
 
 ## Credits
