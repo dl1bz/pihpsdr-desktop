@@ -18,7 +18,7 @@ My orientation is the most extensive SDR application OpenHPSDR-Thetis, earlier k
 With macOS the selection of good SDR applications is very poor, under Linux it's looks a little bit better. piHPSDR is very near at OpenHPSDR-Thetis, because both applications are based at the WDSP-Library developed by Dr. Warren C. Pratt, NR0V. They are - more or less - GUI frontends for this WDSP-Library. That means, we get comparable results with both applications. I personally use piHPSDR only with macOS, but not with Linux.
 But my code should also run at both platforms.
 
-My version breaks the limitation of low-resolution screens and **is made for screen sizes higher than 1280 x 800 or more** and has the focus of macOS and Linux Desktops.
+My version breaks the limitation of low-resolution screens and **is made for screen sizes equal or higher than 1280 x 800 or more** and has the focus of macOS and Linux Desktops.
 
 I call my version not a "fork" of DL1YCF's version, it's more a improved version for desktops. As far as possible my version is ever merged to the most actual code base of DL1YCF's version, but with my additional improvements.
 
