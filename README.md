@@ -10,7 +10,7 @@ Lately Christoph/DL1YCF has continued the development of piHPSDR and add a lot o
 
 The original version is made for running with Linux Desktops, Macs with macOS, but for Raspberry Pi 3/4/5 too and can be used with low-resolution Displays or Monitors too, start from 640x480 screen size.
 
-**IMPORTANT: If you want to use piHPSDR with small displays, you need to use Christoph's/DL1YCF version !**
+**IMPORTANT: If you want to use piHPSDR with small displays, you <u>need</u> to use Christoph's/DL1YCF version !**
 
 ---
 
@@ -20,7 +20,7 @@ But my code should also run at both platforms.
 
 My version breaks the limitation of low-resolution screens and **is made for screen sizes equal or higher than 1280 x 800 or more** and has the focus of macOS and Linux Desktops.
 
-I call my version not a "fork" of DL1YCF's version, it's more a improved version for desktops. As far as possible my version is ever merged to the most actual code base of DL1YCF's version, but with my additional improvements.
+I call my version not a "fork" of DL1YCF's version, it's more a improved version for large desktops. As far as possible my version is ever merged to the most actual code base of DL1YCF's version, but with my additional improvements.
 
 ## CHANGES in my version against the version of DL1YCF
 
