@@ -6,13 +6,16 @@ Lately Christoph/DL1YCF has continued the development of piHPSDR and add a lot o
 
 [https://github.com/dl1ycf/pihpsdr/](https://https://github.com/dl1ycf/pihpsdr/)
 
-## My "improved" version of piHPSDR
+## The goal of my "improved" version of piHPSDR or why I do this
 
 The original version is made for running with Linux Desktops, Macs with macOS, but for Raspberry Pi 3/4/5 too and can be used with low-resolution Displays or Monitors too, start from 640x480 screen size.
 
 **IMPORTANT: If you want to use piHPSDR with small displays, you need to use Christoph's/DL1YCF version !**
 
 ---
+
+My orientation is the most extensive SDR application OpenHPSDR-Thetis, earlier known as PowerSDR. But this application is only available under WINDOWS.
+With macOS the selection of good SDR applications is very poor, under Linux it's looks a little bit better. piHPSDR is very near at OpenHPSDR-Thetis, because both applications are based at the WDSP-Library developed by Dr. Warren C. Pratt, NR0V. They are - more or less - GUI frontends for this WDSP-Library. That means, we get comparable results with both applications.
 
 My version breaks the limitation of low-resolution screens and **is made for screen sizes higher than 1280 x 800 or more** and has the focus of macOS and Linux Desktops.
 
