@@ -69,4 +69,4 @@ Special thanks goes to Christoph/DL1YCF for the very intensive exchange of ideas
 We may have different ideas at different points, but at the end that's a good thing.
 
 I publish my improved version of piHPSDR "as it is". If you want to use it, use it, change it, **however - you do all at your very own risk**.
-**There is no guarantee or warranty from me**. And you won't get any support from me, so please don't ask me - the answer is ever "look in the code for understanding". I'm not a professional developer, I do this all only in my little spare time. There is - unfortunately - no extra time for things like support, answer questions and so on. I ask that you respect that.
+**There is no guarantee or warranty from me**. And you won't get any support from me, so please don't ask me - the answer is ever "look in the code for understanding". I'm not a professional developer, I do this all only in my little spare time. There is - unfortunately - no extra time for things like support, answer questions and so on. I ask that you respect that carefully.
