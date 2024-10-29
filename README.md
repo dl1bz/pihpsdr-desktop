@@ -66,14 +66,14 @@ I do not teach a basic course in using operating systems too ! **You** need to k
 
 ## My development environment
 
-I develop the code with macOS 14.7 . Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and an Macbook Air M1. My SDR device is a [Hermes Lite 2](http://www.hermeslite.com/) with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR.
+I develop the code with macOS 14 aka Sonoma. Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and an Macbook Air M1. My SDR device is a [Hermes Lite 2](http://www.hermeslite.com/) with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR.
 Have a look too at [my QRZ.com page](https://www.qrz.com/db/DL1BZ) and/or [my Blog](https://hamradio.bzsax.de) (only in German).
 
 ## Credits
 
 Thanks to all developers for publish this application piHPSDR as Open Source.
 Special thanks goes to Christoph/DL1YCF for the very intensive exchange of ideas and discussion.
-We may have different ideas at different points, but at the end that's a good thing.
+We may have different ideas at different points, but at the end that's a good thing for further development of piHPSDR.
 
 I publish my improved version of piHPSDR "as it is". If you want to use it, use it, change it, **however - you do all at your very own risk**.
 **There is no guarantee or warranty from me**. And you won't get any support from me, so please don't ask me - the answer is ever "look in the code for understanding". I'm not a professional developer, I do this all only in my little spare time. There is - unfortunately - no extra time for things like support, answer questions and so on. I ask that you respect that carefully.
