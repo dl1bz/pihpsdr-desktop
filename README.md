@@ -15,11 +15,12 @@ The original version is made for running with Linux Desktops, Macs with macOS, b
 ---
 
 My orientation is the most extensive SDR application OpenHPSDR-Thetis, earlier known as PowerSDR. But this application is only available under WINDOWS.
-With macOS the selection of good SDR applications is very poor, under Linux it's looks a little bit better. piHPSDR is very near at OpenHPSDR-Thetis, because both applications are based at the WDSP-Library developed by Dr. Warren C. Pratt, NR0V. They are - more or less - GUI frontends for this WDSP-Library. That means, we get comparable results with both applications.
+With macOS the selection of good SDR applications is very poor, under Linux it's looks a little bit better. piHPSDR is very near at OpenHPSDR-Thetis, because both applications are based at the WDSP-Library developed by Dr. Warren C. Pratt, NR0V. They are - more or less - GUI frontends for this WDSP-Library. That means, we get comparable results with both applications. I personally use piHPSDR only with macOS, but not with Linux.
+But my code should also run at both platforms.
 
 My version breaks the limitation of low-resolution screens and **is made for screen sizes higher than 1280 x 800 or more** and has the focus of macOS and Linux Desktops.
 
-I call my version not as a "fork" of DL1YCF's version, it's more a improved version. As far as possible my version is ever merged to the most actual code base of DL1YCF's version, but with my additional improvements.
+I call my version not a "fork" of DL1YCF's version, it's more a improved version for desktops. As far as possible my version is ever merged to the most actual code base of DL1YCF's version, but with my additional improvements.
 
 ## Changes in my version against the version of DL1YCF
 
@@ -60,3 +61,12 @@ So the original code is still present inside and will be **not removed**.
 **I only publish pure source code, not ready-compiled binaries**. That means, you need to compile the application by yourself and install it. Follow the instructions *Appendix J: LINUX compile from sources* and *Appendix K: MacOS compile from sources* which you can read in the piHPSDR [manual at DL1YCF pihpsdr Github repository](https://github.com/dl1ycf/pihpsdr/releases/download/current/piHPSDR-Manual.pdf).
 
 I do not teach a basic course in using operating systems too ! **You** need to know, how you use a shell in Linux or macOS, a compiler and so on. Without this knowledge you will surely don't have success, if you don't know, what and how you need to do all. With macOS you need to install the Homebrew-Environment and XQuartz for running piHPSDR.
+
+## Credits
+
+Thanks to all developers for publish this application piHPSDR as Open Source.
+Special thanks goes to Christoph/DL1YCF for the very intensive exchange of ideas and discussion.
+We may have different ideas at different points, but at the end that's a good thing.
+
+I publish my improved version of piHPSDR "as it is". If you want to use it, do it, but you do all at your very own risk.
+There is no guarantee or warranty from me. And you won't get any support from me, so please don't ask me - the answer is ever "look in the code for understanding". I'm not a professional developer, I do this all only in my little spare time. There is - unfortunately - no extra time for things like support, answer questions and so on. I ask that you respect that.
