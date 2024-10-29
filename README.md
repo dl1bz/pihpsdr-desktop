@@ -36,7 +36,7 @@ So we have a different work-directory for my improved version of piHPSDR, which 
 
 2. In the TX menu I removed the option **Digi-drive** and replace it with the option **Leveler gain** and **Leveler switch on/off**.
 3. I made some helpful GUI improvements, e.g. I extend the digital S-Meter, show state and level of CFC, Leveler, processor (which is the baseband compressor).
-4. For activate my additional improvements I add a new option in the **Makefile** called **DESKTOP=ON**, which add a new compiler directive __LDESK__ . That means "large desktop". In my code base all improvements are implemented with
+4. For activate my additional improvements I add a new option in the **Makefile** called **DESKTOP=ON**, which add a new compiler directive called `__LDESK__` . That means "large desktop". In my code base all improvements are implemented with
 
 ```
 #if defined (__LDESK__)
