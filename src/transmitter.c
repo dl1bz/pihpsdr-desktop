@@ -924,9 +924,11 @@ TRANSMITTER *tx_create_transmitter(int id, int width, int height) {
   #if defined (__LDESK__)
   tx->tune_drive = 2;
   tx->is_tuned = 0;
-  tx->stored_drive = 0.0;
   #else
   tx->tune_drive = 10;
+  #endif
+  #if defined (__HAVEATU__)
+  tx->stored_drive = 0.0;
   #endif
   tx->mic_gain = 0.0;
   tx->tune_use_drive = 0;
