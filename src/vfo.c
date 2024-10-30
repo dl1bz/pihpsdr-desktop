@@ -695,6 +695,7 @@ void vfo_band_changed(int id, int b) {
   if (b != vfo[id].band) {
     #if defined (__LDESK__)
       t_print("%s: Band is changed ! VFO ID: %d, current band: %d, previous band: %d\n", __FUNCTION__, id, b, (int) vfo[id].band);
+      transmitter->is_tuned = 0;
     #endif
     band = band_get_band(b);
     bandstack = bandstack_get_bandstack(b);
