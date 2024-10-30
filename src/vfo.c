@@ -527,10 +527,8 @@ static inline void vfo_adjust_band(int v, long long f) {
   vfo[v].band = get_band_from_frequency(f);
   #if defined (__LDESK__)
     if (b != vfo[v].band) {
-      t_print("%s: Transmitter previous tuning state: %d\n", __FUNCTION__, (int) transmitter->is_tuned);
+      t_print("%s: Band changed ! VFO id: %d, current band: %d, previous band: %d\n", __FUNCTION__, (int) v,(int) vfo[v].band, (int) b);
       transmitter->is_tuned = 0;
-      t_print("%s: Band changed ! VFO id: %d, old band: %d, new band: %d\n", __FUNCTION__, (int) v, (int) b, (int) vfo[v].band);
-      t_print("%s: Transmitter tuning state: %d\n", __FUNCTION__, (int) transmitter->is_tuned);
     }
   #endif
   bandstack = bandstack_get_bandstack(vfo[v].band);
@@ -694,7 +692,7 @@ void vfo_band_changed(int id, int b) {
   //
   if (b != vfo[id].band) {
     #if defined (__LDESK__)
-      t_print("%s: Band is changed ! VFO ID: %d, current band: %d, previous band: %d\n", __FUNCTION__, id, b, (int) vfo[id].band);
+      t_print("%s: Band changed ! VFO id: %d, current band: %d, previous band: %d\n", __FUNCTION__, id, b, (int) vfo[id].band);
       transmitter->is_tuned = 0;
     #endif
     band = band_get_band(b);
@@ -2116,7 +2114,7 @@ void vfo_update() {
   }
 
   #if defined (__LDESK__)
-  // TX-EQ & Leveler
+  // TX-EQ & Leveler & Tuning state
   if (vfl->eq_x != 0) {
     cairo_move_to(cr, vfl->cat_x + 40, vfl->cat_y);
     if (transmitter->eq_enable) {
