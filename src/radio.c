@@ -1933,6 +1933,7 @@ void radio_set_vox(int state) {
 
 void radio_set_tune(int state) {
   t_print("%s: mox=%d vox=%d tune=%d NewState=%d\n", __FUNCTION__, mox,vox,tune,state);
+
   if (!can_transmit) { return; }
 
   if (state && TxInhibit) { return; }
@@ -2010,6 +2011,7 @@ void radio_set_tune(int state) {
       pre_tune_mode = txmode;
       pre_tune_cw_internal = cw_keyer_internal;
       double freq = 0.0;
+
 #if 0
 
       // Code currently not active:
@@ -2078,6 +2080,13 @@ void radio_set_tune(int state) {
       radio_calc_drive_level();
       #if defined (__LDESK__)
         transmitter->is_tuned = 1;
+        #if defined (__HAVEATU__)
+          if (transmitter->stored_drive > 0) {
+            set_drive(transmitter->stored_drive);
+          }
+          t_print("%s: stored drive level: %.1f\n", __FUNCTION__, transmitter->stored_drive);
+          t_print("%s: current drive level: %.1f\n", __FUNCTION__, radio_get_drive());
+          #endif
       #endif
     }
   }

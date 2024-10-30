@@ -22,6 +22,7 @@ EXTENDED_NR=
 SERVER=OFF
 AUDIO=PULSE
 DESKTOP=OFF
+ATU=OFF
 
 #######################################################################################
 #
@@ -267,6 +268,10 @@ ifeq ($(DESKTOP), ON)
 DESKTOP_OPTIONS=-D__LDESK__
 endif
 
+ifeq ($(ATU), ON)
+ATU_OPTIONS=-D__HAVEATU__
+endif
+
 ##############################################################################
 #
 # Activate code for remote operation, if requested.
@@ -406,6 +411,7 @@ OPTIONS=$(MIDI_OPTIONS) $(USBOZY_OPTIONS) \
 	$(SATURN_OPTIONS) \
 	$(STEMLAB_OPTIONS) \
 	$(DESKTOP_OPTIONS) \
+	$(ATU_OPTIONS) \
 	$(SERVER_OPTIONS) \
 	$(AUDIO_OPTIONS) $(EXTNR_OPTIONS)\
 	-D GIT_DATE='"$(GIT_DATE)"' -D GIT_VERSION='"$(GIT_VERSION)"' -D GIT_COMMIT='"$(GIT_COMMIT)"'
@@ -805,7 +811,7 @@ DEPEND:
 	touch DEPEND
 	makedepend -DMIDI -DSATURN -DUSBOZY -DSOAPYSDR -DEXTNR -DGPIO \
 		-DSTEMLAB_DISCOVERY -DCLIENT_SERVER -DPULSEAUDIO \
-		-DPORTAUDIO -DALSA -D__APPLE__ -D__LDESK__ -D__linux__ \
+		-DPORTAUDIO -DALSA -D__APPLE__ -D__LDESK__ -D__HAVEATU__ -D__linux__ \
 		-f DEPEND -I./src src/*.c src/*.h
 #############################################################################
 #

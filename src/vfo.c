@@ -61,6 +61,10 @@
 #include "equalizer_menu.h"
 #include "message.h"
 
+#if defined (__HAVEATU__)
+  #include "sliders.h"
+#endif
+
 static int my_width;
 static int my_height;
 
@@ -529,6 +533,14 @@ static inline void vfo_adjust_band(int v, long long f) {
     if (b != vfo[v].band) {
       t_print("%s: Band changed ! VFO id: %d, current band: %d, previous band: %d\n", __FUNCTION__, (int) v,(int) vfo[v].band, (int) b);
       transmitter->is_tuned = 0;
+      #if defined (__HAVEATU__)
+        transmitter->stored_drive = radio_get_drive();
+        if (!transmitter->is_tuned) { 
+          set_drive(1.0);
+        }
+        t_print("%s: stored drive level: %.1f\n", __FUNCTION__, transmitter->stored_drive);
+        t_print("%s: current drive level: %.1f\n", __FUNCTION__, radio_get_drive());
+      #endif
     }
   #endif
   bandstack = bandstack_get_bandstack(vfo[v].band);
@@ -694,6 +706,14 @@ void vfo_band_changed(int id, int b) {
     #if defined (__LDESK__)
       t_print("%s: Band changed ! VFO id: %d, current band: %d, previous band: %d\n", __FUNCTION__, id, b, (int) vfo[id].band);
       transmitter->is_tuned = 0;
+      #if defined (__HAVEATU__)
+      transmitter->stored_drive = radio_get_drive();
+      if (!transmitter->is_tuned) { 
+        set_drive(1.0);
+      }
+      t_print("%s: stored drive level: %.1f\n", __FUNCTION__, transmitter->stored_drive);
+      t_print("%s: current drive level: %.1f\n", __FUNCTION__, radio_get_drive());
+      #endif
     #endif
     band = band_get_band(b);
     bandstack = bandstack_get_bandstack(b);
