@@ -62,7 +62,7 @@ So the original code is still present inside and will be **not removed**.
 
 6. The first startup window (before device discovery) show now in addition the used working-directory.
 
-7. add a new compiler directive `__HAVEATU__`, which controls the new TUNED function. After every band change the current TX drive level is saved and the TX drive goes down to a minimum TX drive level 1. You need to use ONE time the TUNE function and after this the previous saved TX drive level will be restored. That's for outdoor ATU which havn't a feedback signal, so this protect your PA to not send with full power if the ATU is  not tuned or you forgot tuning.
+7. add a new compiler directive `__HAVEATU__`, which controls the new TUNED function. After every band change the current TX drive level is saved and the TX drive goes down to a minimum TX drive level 1. You need to use ONE time the TUNE function and after this the previous saved TX drive level will be restored. That's for outdoor ATU which havn't a feedback signal, so this protect your PA to not send with full power if the ATU is  not tuned or you forgot tuning. To activate this option you need to set in the **Makefile** the option **ATU=ON**. Otherwise you will see the **TUNED** display, but only without any control of the TX drive level. It's only display if you use the **TUNE** one time after band change, not more.
 
 ## Requirements - personal skills and technical knowledge
 
