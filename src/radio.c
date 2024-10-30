@@ -2076,7 +2076,9 @@ void radio_set_tune(int state) {
 
       tune = state;
       radio_calc_drive_level();
-      transmitter->is_tuned = 1;
+      #if defined (__LDESK__)
+        transmitter->is_tuned = 1;
+      #endif
     }
   }
 
