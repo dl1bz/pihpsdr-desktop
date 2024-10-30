@@ -527,6 +527,7 @@ static inline void vfo_adjust_band(int v, long long f) {
   vfo[v].band = get_band_from_frequency(f);
   #if defined (__LDESK__)
     if (b != vfo[v].band) {
+      t_print("%s: Transmitter previous tuning state: %d\n", __FUNCTION__, (int) transmitter->is_tuned);
       transmitter->is_tuned = 0;
       t_print("%s: Band changed ! VFO id: %d, old band: %d, new band: %d\n", __FUNCTION__, (int) v, (int) b, (int) vfo[v].band);
       t_print("%s: Transmitter tuning state: %d\n", __FUNCTION__, (int) transmitter->is_tuned);
@@ -2139,6 +2140,17 @@ void vfo_update() {
       snprintf(temp_text, 32, "LEV");
     }
     cairo_show_text(cr, temp_text);
+
+    cairo_move_to(cr, vfl->cat_x + 180, vfl->cat_y);
+    if (transmitter->is_tuned) {
+      cairo_set_source_rgba(cr, COLOUR_ATTN);
+      snprintf(temp_text, 32, "TUNED");
+    } else {
+      cairo_set_source_rgba(cr, COLOUR_SHADE);
+      snprintf(temp_text, 32, "TUNED");
+    }
+    cairo_show_text(cr, temp_text);
+
   }
   #endif
 
