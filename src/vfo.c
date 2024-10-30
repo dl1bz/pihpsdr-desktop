@@ -525,6 +525,13 @@ static inline void vfo_adjust_band(int v, long long f) {
   //       out of a transverter band!
   //
   vfo[v].band = get_band_from_frequency(f);
+  #if defined (__LDESK__)
+    if (b != vfo[v].band) {
+      transmitter->is_tuned = 0;
+      t_print("%s: Band changed ! VFO id: %d, old band: %d, new band: %d\n", __FUNCTION__, (int) v, (int) b, (int) vfo[v].band);
+      t_print("%s: Transmitter tuning state: %d\n", __FUNCTION__, (int) transmitter->is_tuned);
+    }
+  #endif
   bandstack = bandstack_get_bandstack(vfo[v].band);
   vfo[v].bandstack = bandstack->current_entry;
 }
@@ -685,14 +692,13 @@ void vfo_band_changed(int id, int b) {
   // Note the LO frequency of the *new* band must be subtracted here
   //
   if (b != vfo[id].band) {
+    #if defined (__LDESK__)
+      t_print("%s: Band is changed ! VFO ID: %d, current band: %d, previous band: %d\n", __FUNCTION__, id, b, (int) vfo[id].band);
+    #endif
     band = band_get_band(b);
     bandstack = bandstack_get_bandstack(b);
     long long f = bandstack->entry[bandstack->current_entry].frequency;
     f -= (band->frequencyLO + band->errorLO);
-
-    #if defined (__LDESK__)
-      t_print("%s: Band is changed !\n", __FUNCTION__);
-    #endif
 
     if (f < radio->frequency_min || f > radio->frequency_max) {
       return;

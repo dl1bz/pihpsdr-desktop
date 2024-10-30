@@ -923,6 +923,7 @@ TRANSMITTER *tx_create_transmitter(int id, int width, int height) {
   tx->drive = 50;
   #if defined (__LDESK__)
   tx->tune_drive = 2;
+  tx->is_tuned = 1;
   #else
   tx->tune_drive = 10;
   #endif

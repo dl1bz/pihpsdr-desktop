@@ -1932,7 +1932,7 @@ void radio_set_vox(int state) {
 }
 
 void radio_set_tune(int state) {
-  //t_print("%s: mox=%d vox=%d tune=%d NewState=%d\n", __FUNCTION__, mox,vox,tune,state);
+  t_print("%s: mox=%d vox=%d tune=%d NewState=%d\n", __FUNCTION__, mox,vox,tune,state);
   if (!can_transmit) { return; }
 
   if (state && TxInhibit) { return; }
