@@ -12,16 +12,16 @@
 #
 #######################################################################################
 
-GPIO=ON
+GPIO=OFF
 MIDI=ON
-SATURN=ON
+SATURN=OFF
 USBOZY=OFF
 SOAPYSDR=OFF
 STEMLAB=OFF
 EXTENDED_NR=
 SERVER=OFF
 AUDIO=PULSE
-DESKTOP=OFF
+DESKTOP=ON
 ATU=OFF
 
 #######################################################################################
