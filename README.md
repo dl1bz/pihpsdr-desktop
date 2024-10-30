@@ -72,7 +72,7 @@ I do not teach a basic course in using operating systems too ! **You** need to k
 
 ## My development environment
 
-I develop the code with macOS 14 aka Sonoma. Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and a Macbook Air M1. My SDR device is a [Hermes Lite 2](http://www.hermeslite.com/) with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR. **I don't want to make any tests with Linux, only with macOS !**
+I develop the code with macOS 14 aka Sonoma. Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and a Macbook Air M1. My SDR device is a [Hermes Lite 2](http://www.hermeslite.com/) with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR. **I don't want to make tests with Linux, only with macOS the code will be checked against possible problems !**
 
 ---
 
