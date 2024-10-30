@@ -690,6 +690,10 @@ void vfo_band_changed(int id, int b) {
     long long f = bandstack->entry[bandstack->current_entry].frequency;
     f -= (band->frequencyLO + band->errorLO);
 
+    #if defined (__LDESK__)
+      t_print("%s: Band is changed !\n", __FUNCTION__);
+    #endif
+
     if (f < radio->frequency_min || f > radio->frequency_max) {
       return;
     }
