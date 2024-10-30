@@ -833,7 +833,9 @@ endif
 	$(LINK) -headerpad_max_install_names -o $(PROGRAM) $(OBJS) $(AUDIO_OBJS) $(USBOZY_OBJS)  \
 		$(SOAPYSDR_OBJS) $(MIDI_OBJS) $(STEMLAB_OBJS) $(SERVER_OBJS) $(SATURN_OBJS) \
 		$(LIBS) $(LDFLAGS)
+	@echo "Remove further compiled pihpsdr..."
 	@rm -rf pihpsdr.app
+	@echo "Remove old pihpsdr.app container from ${HOME}/Desktop ..."
 	@rm -rf ${HOME}/Desktop/pihpsdr.app
 	@mkdir -p pihpsdr.app/Contents/MacOS
 	@mkdir -p pihpsdr.app/Contents/Frameworks
