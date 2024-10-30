@@ -22,3 +22,4 @@ LINUX/SoapyRTLSDR
 release/LatexManual/piHPSDR-Manual.pdf
 wdsp/WDSP_Guide.pdf
 wdsp/libwdsp.a
+make.config.pihpsdr
