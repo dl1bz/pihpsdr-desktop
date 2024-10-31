@@ -78,8 +78,9 @@ void about_menu(GtkWidget *parent) {
   g_signal_connect (close_b, "button-press-event", G_CALLBACK(close_cb), NULL);
   gtk_grid_attach(GTK_GRID(grid), close_b, 0, row, 1, 1);
   row++;
-  snprintf(text, 1024, "piHPSDR origin by John Melton G0ORX/N6LYT\n"
-           "Hamradio SDR Application supports HPSDR protocols 1 & 2\n\n"
+  snprintf(text, 1024, "Hamradio SDR-Software for HPSDR protocol 1 & 2\n"
+           "Origin by G0ORX/N6LYT and DL1YCF\n"
+           "Improved and extended version by DL1BZ\n\n"
            "    Credits:\n"
            "    Steve Wilson, KA6S: RIGCTL (CAT over TCP)\n"
            "    Laurence Barker, G8NJJ: USB OZY Support\n"
