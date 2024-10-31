@@ -488,14 +488,24 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
   gtk_grid_attach(GTK_GRID(topgrid), image, 0, 0, 1, 2);
   t_print("create pi label\n");
   #if defined (__LDESK__)
-    GtkWidget *pi_label = gtk_label_new("piHPSDR by John Melton G0ORX/N6LYT and DL1YCF");
+    snprintf(text, 256, "Hamradio SDR-Software for HPSDR protocol 1 & 2\nOrigin by G0ORX/N6LYT and DL1YCF\nImproved and extended version by DL1BZ");
+    GtkWidget *pi_label = gtk_label_new(text);
+    gtk_widget_set_name(pi_label, "big_txt");
+    gtk_widget_set_halign(pi_label, GTK_ALIGN_START);
+    gtk_grid_attach(GTK_GRID(topgrid), pi_label, 1, 0, 3, 1);
+
+    // snprintf(text, 256, "improved version by DL1BZ");
+    // GtkWidget *pi_label_2 = gtk_label_new(text);
+    // gtk_widget_set_name(pi_label_2, "big_txt");
+    // gtk_widget_set_halign(pi_label_2, GTK_ALIGN_START);
+    // gtk_grid_attach(GTK_GRID(topgrid), pi_label_2, 1, 1, 3, 1);
   #else
   GtkWidget *pi_label = gtk_label_new("piHPSDR by John Melton G0ORX/N6LYT");
-  #endif
   gtk_widget_set_name(pi_label, "big_txt");
   gtk_widget_set_halign(pi_label, GTK_ALIGN_START);
   t_print("add pi label to grid\n");
   gtk_grid_attach(GTK_GRID(topgrid), pi_label, 1, 0, 3, 1);
+  #endif
   t_print("create build label\n");
   #if defined (__LDESK__)
   snprintf(text, 256, "Built %s, Version %s\nOptions: %s\nAudio module: %s\nWorking Directory: %s",
@@ -508,13 +518,21 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
   gtk_widget_set_name(build_date_label, "med_txt");
   gtk_widget_set_halign(build_date_label, GTK_ALIGN_START);
   t_print("add build label to grid\n");
+  #if defined (__LDESK__)
+  gtk_grid_attach(GTK_GRID(topgrid), build_date_label, 1, 2, 3, 1);
+  #else
   gtk_grid_attach(GTK_GRID(topgrid), build_date_label, 1, 1, 3, 1);
+  #endif
   t_print("create status\n");
   status_label = gtk_label_new(NULL);
   gtk_widget_set_name(status_label, "med_txt");
   gtk_widget_set_halign(status_label, GTK_ALIGN_START);
   t_print("add status to grid\n");
+  #if defined (__LDESK__)
+  gtk_grid_attach(GTK_GRID(topgrid), status_label, 1, 3, 3, 1);
+  #else
   gtk_grid_attach(GTK_GRID(topgrid), status_label, 1, 2, 3, 1);
+  #endif
   gtk_widget_show_all(top_window);
   t_print("g_idle_add: init\n");
   g_idle_add(init, NULL);
