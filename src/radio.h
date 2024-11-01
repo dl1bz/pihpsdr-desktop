@@ -71,12 +71,14 @@ enum _region_enum {
 };
 
 enum _capture_state {
-  CAP_INIT = 0,            // util first press
+  CAP_INIT = 0,            // util first recording
   CAP_RECORDING,           // audio is being recorded
   CAP_RECORD_DONE,         // record buffer full
   CAP_AVAIL,               // audio recording finished
   CAP_REPLAY,              // audio is being re-played
-  CAP_REPLAY_DONE          // all audio has been sent
+  CAP_REPLAY_DONE,         // all audio has been sent
+  CAP_GOTOSLEEP,           // hide capture state display
+  CAP_SLEEPING             // capture state is hidden
 };
 
 //
@@ -255,6 +257,7 @@ extern double div_cos, div_sin;
 extern double div_gain, div_phase;
 
 extern int capture_state;
+extern const int capture_max;
 extern int capture_record_pointer;
 extern int capture_replay_pointer;
 extern double *capture_data;
@@ -266,6 +269,7 @@ extern int have_rx_att;          // step attenuator available -31 ... 0 dB
 extern int have_preamp;          // switchable preamp
 extern int have_alex_att;        // ALEX board does have 0/10/20/30 dB attenuator
 extern int have_saturn_xdma;     // Saturn can use Network or XDMA interface
+extern int have_racm5;           // running on a Raxda CM5
 extern int rx_gain_calibration;  // used to calibrate the input signal
 
 extern double drive_max;         // maximum value of the drive slider

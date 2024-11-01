@@ -1554,7 +1554,7 @@ void vfo_update() {
       snprintf(temp_text, 32, "%s %s", mode_string[vfo[id].mode], band_filter->title);
       break;
     }
-    
+
     #if defined (__LDESK__)
     cairo_set_font_size(cr, vfl->size1 + 2);
     #else
@@ -2024,7 +2024,7 @@ void vfo_update() {
       cairo_set_source_rgba(cr, COLOUR_SHADE);
       cairo_show_text(cr, "RxEQ");
     }
-    
+
     #else
     cairo_move_to(cr, vfl->eq_x, vfl->eq_y);
     if (radio_is_transmitting() && transmitter->eq_enable) {

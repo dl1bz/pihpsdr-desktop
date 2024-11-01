@@ -271,6 +271,7 @@ int have_rx_att = 0;
 int have_alex_att = 0;
 int have_preamp = 0;
 int have_saturn_xdma = 0;
+int have_racm5 = 0;
 int rx_gain_calibration = 0;
 
 int split = 0;
@@ -317,6 +318,7 @@ double div_phase = 0.0;    // phase for diversity (in degrees, 0 ... 360)
 // (Equalizers are switched off during capture and replay)
 //
 int capture_state = CAP_INIT;
+const int capture_max = 480000;  // 10 seconds
 int capture_record_pointer;
 int capture_replay_pointer;
 double *capture_data = NULL;
@@ -1058,6 +1060,14 @@ void radio_start_radio() {
   #else
   optimize_for_touchscreen = 1;
   #endif
+
+  protocol = radio->protocol;
+  device = radio->device;
+
+  if (device == NEW_DEVICE_SATURN && (strcmp(radio->info.network.interface_name, "XDMA") == 0)) {
+    have_saturn_xdma = 1;
+  }
+
   for (int id = 0; id < MAX_SERIAL; id++) {
     //
     // Apply some default values. The name ttyACMx is suitable for
@@ -1067,26 +1077,35 @@ void radio_start_radio() {
     SerialPorts[id].andromeda = 0;
     SerialPorts[id].baud = 0;
     SerialPorts[id].autoreporting = 0;
+    SerialPorts[id].g2= 0;
     snprintf(SerialPorts[id].port, sizeof(SerialPorts[id].port), "/dev/ttyACM%d", id);
   }
 
   //
-  // If the controller is G2_V2, enable last serial port for the
+  // On a G2-Mk2 (alias G2 Ultra), enable last serial port for the
   // built-in ANDROMEDA-type panel on /dev/ttyAMA1.
   //
-  if (controller == G2_V2) {
+  if (controller == G2_V2 && have_saturn_xdma) {
     SerialPorts[MAX_SERIAL - 1].enable = 1;
     SerialPorts[MAX_SERIAL - 1].andromeda = 1;
     SerialPorts[MAX_SERIAL - 1].baud = B9600;
     SerialPorts[MAX_SERIAL - 1].autoreporting = 0;
+    SerialPorts[MAX_SERIAL - 1].g2 = 1;
     snprintf(SerialPorts[MAX_SERIAL - 1].port, sizeof(SerialPorts[MAX_SERIAL - 1].port), "/dev/ttyAMA1");
   }
 
-  protocol = radio->protocol;
-  device = radio->device;
-
-  if (device == NEW_DEVICE_SATURN && (strcmp(radio->info.network.interface_name, "XDMA") == 0)) {
-    have_saturn_xdma = 1;
+  //
+  // On G2's with CM5 module (both Mk1 and Mk2!), we will always have
+  // ANDROMEDA-type control. That is, in this  case overwrite the default
+  // G2Mk2 settings!
+  //
+  if (have_saturn_xdma && have_racm5) {
+    SerialPorts[MAX_SERIAL - 1].enable = 1;
+    SerialPorts[MAX_SERIAL - 1].andromeda = 1;
+    SerialPorts[MAX_SERIAL - 1].baud = B115200;
+    SerialPorts[MAX_SERIAL - 1].autoreporting = 0;
+    SerialPorts[MAX_SERIAL - 1].g2 = 1;
+    snprintf(SerialPorts[MAX_SERIAL - 1].port, sizeof(SerialPorts[MAX_SERIAL - 1].port), "/dev/ttyS7");
   }
 
   if (device == DEVICE_METIS || device == DEVICE_OZY || device == NEW_DEVICE_ATLAS) {
@@ -2537,14 +2556,20 @@ static void radio_restore_state() {
   }
 
   for (int id = 0; id < MAX_SERIAL; id++) {
-    GetPropI1("rigctl_serial_enable[%d]", id,                SerialPorts[id].enable);
-    GetPropI1("rigctl_serial_andromeda[%d]", id,             SerialPorts[id].andromeda);
-    GetPropI1("rigctl_serial_baud_rate[%i]", id,             SerialPorts[id].baud);
     GetPropS1("rigctl_serial_port[%d]", id,                  SerialPorts[id].port);
-    GetPropI1("rigctl_serial_autoreporting[%d]", id,         SerialPorts[id].autoreporting);
+    //
+    // For a serial port internally used for G2,
+    // only allow changes to the port name
+    //
+    if (!SerialPorts[id].g2) {
+      GetPropI1("rigctl_serial_enable[%d]", id,                SerialPorts[id].enable);
+      GetPropI1("rigctl_serial_andromeda[%d]", id,             SerialPorts[id].andromeda);
+      GetPropI1("rigctl_serial_baud_rate[%i]", id,             SerialPorts[id].baud);
+      GetPropI1("rigctl_serial_autoreporting[%d]", id,         SerialPorts[id].autoreporting);
 
-    if (SerialPorts[id].andromeda) {
-      SerialPorts[id].baud = B9600;
+      if (SerialPorts[id].andromeda) {
+        SerialPorts[id].baud = B9600;
+      }
     }
   }
 
@@ -3073,7 +3098,7 @@ void radio_end_capture() {
     if (t > max) { max = t; }
   }
 
-  t_print("%s: max=%f\n", __FUNCTION__, max);
+  //t_print("%s: max=%f\n", __FUNCTION__, max);
 
   if (max > 0.05) {
     //
@@ -3100,28 +3125,43 @@ void radio_start_playback() {
   // - turn off TX equalizer   but keep equalizer  info in transmitter->eq_enable
   // - turn off TX compression but keep compressor info in transmitter->compression
   // - set mic gain  to zero   but keep mic_gain   info in transmitter->mic_gain
+  // - disable CFC             but keep            info in transmitter->mic_gain
+  // - disable DEXP            but keep            info in transmitter->mic_gain
   //
   int  comp   = transmitter->compressor;
+  int  cfc    = transmitter->cfc;
+  int  cfc_eq = transmitter->cfc_eq;
   int  eq     = transmitter->eq_enable;
+  int  dexp   = transmitter->dexp;
   double gain = transmitter->mic_gain;
-  int cfc = transmitter->cfc;
-  int cfc_eq = transmitter->cfc_eq;
+  #if defined (__LDESK__)
   int leveler_enable = transmitter->lev_enable;
+  #endif
+
   transmitter->eq_enable = 0;
+  transmitter->compressor = 0;
+  transmitter->mic_gain = 0.0;
   transmitter->cfc = 0;
   transmitter->cfc_eq = 0;
-  transmitter->compressor = 0;
+  transmitter->dexp = 0;
+  #if defined (__LDESK__)
   transmitter->lev_enable = 0;
-  transmitter->mic_gain = 0.0;
+  #endif
+
   tx_set_equalizer(transmitter);
   tx_set_mic_gain(transmitter);
   tx_set_compressor(transmitter);
+  tx_set_dexp(transmitter);
+
   transmitter->compressor = comp;
-  transmitter->lev_enable = leveler_enable;
-  transmitter->eq_enable  = eq;
   transmitter->cfc = cfc;
   transmitter->cfc_eq = cfc_eq;
+  transmitter->dexp = dexp;
+  transmitter->eq_enable  = eq;
   transmitter->mic_gain = gain;
+  #if defined (__LDESK__)
+  transmitter->lev_enable = leveler_enable;
+  #endif
 }
 
 void radio_end_playback() {
@@ -3130,8 +3170,10 @@ void radio_end_playback() {
   // - TX equalizer on/off
   // - TX compressor on/off
   // - TX mic gain setting
+  // - CFC and DEXP
   //
   tx_set_equalizer(transmitter);
   tx_set_mic_gain(transmitter);
   tx_set_compressor(transmitter);
+  tx_set_dexp(transmitter);
 }

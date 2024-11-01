@@ -703,22 +703,14 @@ int process_action(void *data) {
     if (can_transmit && a->mode == PRESSED) {
       switch (capture_state) {
       case CAP_INIT:
-        if (radio_is_transmitting()) {
-          //
-          // Hitting "capture" during TX when nothing has ever been
-          // recorded results in a no-op
-          //
-          break;
-        }
-
         //
-        // Hitting "capture" during RX when nothing has ever been
-        // recorded: allocate audio capture buffer, and start recording
+        // Hitting "capture" during TX when nothing has ever been
+        // recorded moves us to CAP_AVAIL with an empty buffer.
         //
-        capture_data = g_new(double, 480000);
-        radio_start_capture();
+        capture_data = g_new(double, capture_max);
         capture_record_pointer = 0;
-        capture_state = CAP_RECORDING;
+        capture_replay_pointer = 0;
+        capture_state = CAP_AVAIL;
         break;
 
       case CAP_AVAIL:
@@ -744,7 +736,7 @@ int process_action(void *data) {
         //
         // The two states only differ in whether recording stops due
         // to user request (CAP_RECORDING) or because the audio
-        // buffer was full (CAP_RECORDING_DONE)
+        // buffer was full (CAP_RECORD_DONE)
         //
         radio_end_capture();
         capture_state = CAP_AVAIL;
@@ -758,6 +750,21 @@ int process_action(void *data) {
         // has been re-played.
         //
         radio_end_playback();
+        capture_state = CAP_AVAIL;
+        break;
+
+      case CAP_GOTOSLEEP:
+        //
+        // Called after a timeout
+        //
+        capture_state = CAP_SLEEPING;
+        break;
+
+      case CAP_SLEEPING:
+        //
+        // Data is available but this is not displayed. Go back to
+        // CAP_AVAIL
+        //
         capture_state = CAP_AVAIL;
         break;
       }
