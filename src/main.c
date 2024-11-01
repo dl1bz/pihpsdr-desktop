@@ -380,6 +380,9 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
   //
   gtk_window_set_position(GTK_WINDOW(top_window), GTK_WIN_POS_CENTER);
   gtk_window_set_resizable(GTK_WINDOW(top_window), FALSE);
+  #if defined (__LDESK__)
+    gtk_window_set_deletable(GTK_WINDOW(top_window), FALSE); // remove close button in main window
+  #endif
   //
   // Get the position of the top window, and then determine
   // to which monitor this position belongs.
