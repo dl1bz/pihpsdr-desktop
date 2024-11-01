@@ -28,7 +28,7 @@ I call my version not a "fork" of DL1YCF's version, it's more a improved version
 
 ---
 
-1. change the work-directory from
+1. Change the work-directory from
 
 ```
    ˜/Library/Application Support/piHPSDR (macOS)
@@ -62,9 +62,9 @@ So the original code is still present inside and will be **not removed**.
 
 6. The first startup window (before device discovery) show now in addition the used working-directory.
 
-7. add a new compiler directive `__HAVEATU__`, which controls the new TUNED function. After every band change the current TX drive level is saved and the TX drive goes down to a minimum TX drive level 1. You need to use ONE time the TUNE function and after this the previous saved TX drive level will be restored. That's for outdoor ATU which havn't a feedback signal, so this protect your PA to not send with full power if the ATU is  not tuned or you forgot tuning. To activate this option you need to set in the **Makefile** the option **ATU=ON**. Otherwise you will see only **TUNED** at the VFO display, but only without any control or change of the TX drive level. It's only display if you use the **TUNE** one time after band change, not more.
+7. Add a new compiler directive `__HAVEATU__`, which controls the new TUNED function. After every band change the current TX drive level is saved and the TX drive goes down to a minimum TX drive level 1. You need to use ONE time the TUNE function and after this the previous saved TX drive level will be restored. That's for outdoor ATU which havn't a feedback signal, so this protect your PA to not send with full power if the ATU is  not tuned or you forgot tuning. To activate this option you need to set in the **Makefile** the option **ATU=ON**. Otherwise you will see only **TUNED** at the VFO display, but only without any control or change of the TX drive level. It's only display if you use the **TUNE** one time after band change, not more.
 
-8. add an **EXIT** button in the right corner where you have the **Hide** und **Menu** button and disable the system CLOSE window button.
+8. Add an **EXIT** button in the right corner where you have the **Hide** und **Menu** button and disable the system CLOSE window button.
 
 9. De-Channelize 60m band. The previous "Channelizing" of the 60m band was not very helpful and caused some issues e.g. with the bandstack. Most countries have now take over the WRC15 regulations for 60m (except UK & US). Thats why I set WRC15 regulations now as default for the 60m band.
 
