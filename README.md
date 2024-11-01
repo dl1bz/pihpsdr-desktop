@@ -66,6 +66,8 @@ So the original code is still present inside and will be **not removed**.
 
 8. add an **EXIT** button in the right corner where you have the **Hide** und **Menu** button and disable the system CLOSE window button.
 
+9. De-Channelize 60m band. The previous "Channelizing" of the 60m band was not very helpful and caused some issues e.g. with the bandstack. Most countries have now take over the WRC15 regulations for 60m (except UK & US). Thats why I set WRC15 regulations now as default for the 60m band.
+
 ## Requirements - personal skills and technical knowledge
 
 **I only publish pure source code, not ready-compiled binaries, so please never ask me about that**. That means, you need to compile the application by yourself and install it. Follow the instructions *Appendix J: LINUX compile from sources* and *Appendix K: MacOS compile from sources* which you can read in the piHPSDR [manual at DL1YCF pihpsdr Github repository](https://github.com/dl1ycf/pihpsdr/releases/download/current/piHPSDR-Manual.pdf).
