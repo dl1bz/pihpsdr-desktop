@@ -285,7 +285,9 @@ void rx_panadapter_update(RECEIVER *rx) {
   cairo_set_line_width(cr, PAN_LINE_THIN);
   cairo_stroke(cr);
 
+  #if defined (__LDESK__)
   if (vfoband != band60) {
+  #endif
     // band edges
     if (band->frequencyMin != 0LL) {
       cairo_set_source_rgba(cr, COLOUR_ALARM);
@@ -307,7 +309,9 @@ void rx_panadapter_update(RECEIVER *rx) {
         cairo_stroke(cr);
       }
     }
+  #if defined (__LDESK__)
   }
+  #endif
 
 #ifdef CLIENT_SERVER
 
