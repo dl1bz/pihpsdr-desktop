@@ -588,11 +588,18 @@ void display_panadapter_messages(cairo_t *cr, int width, unsigned int fps) {
       #endif
       sequence_error_count++;
 
+      #if defined (__LDESK__)
+        if (sequence_error_count >= 2 * fps) {
+        sequence_errors = 0;
+        sequence_error_count = 0;
+      }
+      #else
       if (sequence_error_count == 2 * fps) {
         sequence_errors = 0;
         sequence_error_count = 0;
       }
-    }
+      #endif
+      }
 
     if (adc0_overload || adc1_overload) {
       static unsigned int adc_error_count = 0;
