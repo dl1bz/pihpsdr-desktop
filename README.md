@@ -1,4 +1,4 @@
-# piHPSDR - modified and improved version optimized for Desktops
+# piHPSDR - Improved version (optimized for Desktops)
 
 piHPSDR is a Open Source hamradio SDR application for Linux and macOS, primarily for use with SDR devices using the HPSDR protocol 1 & 2 and was initially developed by John Melton G0ORX/N6LYT.
 
