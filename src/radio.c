@@ -1543,7 +1543,9 @@ void radio_start_radio() {
 
   receivers = RECEIVERS;
   radio_restore_state();
+  #if !defined (__LDESK__)
   radio_change_region(region);
+  #endif
   radio_create_visual();
   radio_reconfigure_screen();
 

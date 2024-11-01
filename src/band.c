@@ -27,6 +27,7 @@
 #include "property.h"
 #include "radio.h"
 #include "vfo.h"
+#include "message.h"
 
 int xvtr_band = BANDS;
 
@@ -65,6 +66,16 @@ static BANDSTACK_ENTRY bandstack_entries80[] = {
   {3751000LL, 0, 0LL, modeLSB, filterF5, 2500, 0, 0},
   {3850000LL, 0, 0LL, modeLSB, filterF5, 2500, 0, 0}
 };
+
+#if defined (__LDESK__)
+static BANDSTACK_ENTRY bandstack_entries60[] = {
+  {5352750LL, 0, 0LL, modeCWU, filterF6, 2500, 0, 0},
+  {5354000LL, 0, 0LL, modeUSB, filterF5, 2500, 0, 0},
+  {5357000LL, 0, 0LL, modeUSB, filterF5, 2500, 0, 0},
+  {5360000LL, 0, 0LL, modeUSB, filterF5, 2500, 0, 0},
+  {5363000LL, 0, 0LL, modeUSB, filterF5, 2500, 0, 0}
+};
+#endif
 
 static BANDSTACK_ENTRY bandstack_entries60_WRC15[] = {
   {5352750LL, 0, 0LL, modeCWU, filterF6, 2500, 0, 0},
@@ -221,7 +232,7 @@ static BANDSTACK_ENTRY bandstack_entriesWWV[] = {
 static BANDSTACK bandstack160  = {3, 1, bandstack_entries160};
 static BANDSTACK bandstack80   = {3, 1, bandstack_entries80};
 #if defined (__LDESK__)
-static BANDSTACK bandstack60   = {3, 1, bandstack_entries60_WRC15};
+static BANDSTACK bandstack60   = {5, 1, bandstack_entries60};
 #else
 static BANDSTACK bandstack60   = {5, 1, bandstack_entries60_OTHER};
 #endif
@@ -678,6 +689,7 @@ int TransmitAllowed() {
     break;
   }
 
+  #if !defined (__LDESK__)
   if (txb == band60) {
     //
     // For 60m band, ensure signal is within one of the "channels"
@@ -703,8 +715,10 @@ int TransmitAllowed() {
     //
     result = flow >= txband->frequencyMin && fhigh <= txband->frequencyMax;
   }
-
-  //t_print("CANTRANSMIT: low=%lld  high=%lld transmit=%d\n", flow, fhigh, result);
+  #else
+    result = flow >= txband->frequencyMin && fhigh <= txband->frequencyMax;
+  #endif
+  t_print("%s: CANTRANSMIT: low=%lld  high=%lld transmit=%d\n", __FUNCTION__, flow, fhigh, result);
   return result;
 }
 

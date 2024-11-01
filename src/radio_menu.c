@@ -326,7 +326,9 @@ static void receivers_cb(GtkToggleButton *widget, gpointer data) {
 }
 
 static void region_cb(GtkWidget *widget, gpointer data) {
+  #if !defined (__LDESK__)
   radio_change_region(gtk_combo_box_get_active (GTK_COMBO_BOX(widget)));
+  #endif
 }
 
 static void rit_cb(GtkWidget *widget, gpointer data) {
@@ -532,10 +534,13 @@ void radio_menu(GtkWidget *parent) {
   if (row > max_row) { max_row = row; }
 
   row = 1;
-  label = gtk_label_new("Region:");
+  label = gtk_label_new("Region for 60m:");
   gtk_widget_set_name(label, "boldlabel");
   gtk_widget_set_halign(label, GTK_ALIGN_START);
   gtk_grid_attach(GTK_GRID(grid), label, 2, row, 1, 1);
+  #if defined (__LDESK__)
+  gtk_widget_set_sensitive (label, FALSE);
+  #endif
   row++;
   GtkWidget *region_combo = gtk_combo_box_text_new();
   gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(region_combo), NULL, "Other");
@@ -544,6 +549,9 @@ void radio_menu(GtkWidget *parent) {
   gtk_combo_box_set_active(GTK_COMBO_BOX(region_combo), region);
   my_combo_attach(GTK_GRID(grid), region_combo, 2, row, 1, 1);
   g_signal_connect(region_combo, "changed", G_CALLBACK(region_cb), NULL);
+  #if defined (__LDESK__)
+  gtk_widget_set_sensitive (region_combo, FALSE);
+  #endif
   row++;
 
   if (protocol == ORIGINAL_PROTOCOL || protocol == NEW_PROTOCOL) {

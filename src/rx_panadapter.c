@@ -170,6 +170,7 @@ void rx_panadapter_update(RECEIVER *rx) {
   long long min_display = frequency - half + (long long)((double)rx->pan * HzPerPixel);
   long long max_display = min_display + (long long)((double)rx->width * HzPerPixel);
 
+  #if !defined (__LDESK__)
   if (vfoband == band60) {
     for (i = 0; i < channel_entries; i++) {
       long long low_freq = band_channels_60m[i].frequency - (band_channels_60m[i].width / (long long)2);
@@ -181,6 +182,7 @@ void rx_panadapter_update(RECEIVER *rx) {
       cairo_fill(cr);
     }
   }
+  #endif
 
   // filter
   cairo_set_source_rgba (cr, COLOUR_PAN_FILTER);
