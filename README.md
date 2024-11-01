@@ -68,13 +68,13 @@ So the original code is still present inside and will be **not removed**.
 
 9. De-Channelize 60m band. The previous "Channelizing" of the 60m band was not very helpful and caused some issues e.g. with the bandstack. Most countries have now take over the WRC15 regulations for 60m (except UK & US). Thats why I set WRC15 regulations now as default for the 60m band.
 
-## Requirements - personal skills and technical knowledge
+## Requirements: personal skills and technical knowledge
 
 **I only publish pure source code, not ready-compiled binaries, so please never ask me about that**. That means, you need to compile the application by yourself and install it. Follow the instructions *Appendix J: LINUX compile from sources* and *Appendix K: MacOS compile from sources* which you can read in the piHPSDR [manual at DL1YCF pihpsdr Github repository](https://github.com/dl1ycf/pihpsdr/releases/download/current/piHPSDR-Manual.pdf).
 
 I do not teach a basic course in using operating systems too ! **You** need to know, how you use a shell in Linux or macOS, a compiler and so on. Without this knowledge you will surely don't have success, if you don't know, what and how you need to do all. With macOS you need to install the Homebrew-Environment and XQuartz for running piHPSDR.
 
-## My development environment
+## My development environment for piHPSDR
 
 I develop the code with macOS 14 aka Sonoma. Here is running an Intel Macbook Air i5, an Intel iMac i5 21" and a Macbook Air M1. My SDR device is a [Hermes Lite 2](http://www.hermeslite.com/) with homebrew LDMOS-Amplifier 600W. Under these conditions I make all of my tests with piHPSDR. **I don't want to make tests with Linux, only with macOS the code will be checked against possible problems !**
 
